@@ -1,4 +1,4 @@
-import 'package:food_ordering_application/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/shared/utils.dart'; 
 
 confirmPassword(value, password) {
   if (value!.isNotEmpty) {

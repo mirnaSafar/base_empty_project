@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_ordering_application/ui/shared/colors.dart';
-import 'package:food_ordering_application/ui/shared/extensions.dart';
+import 'package:flutter_templete/ui/shared/extensions.dart'; 
 import 'package:sizer/sizer.dart';
+
+import '../colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;

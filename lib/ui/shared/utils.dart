@@ -1,19 +1,19 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:food_ordering_application/app/my_app_controller.dart';
-import 'package:food_ordering_application/core/data/repositories/shared_preference_repository.dart';
-import 'package:food_ordering_application/core/enums/file_type.dart';
-import 'package:food_ordering_application/core/enums/message_type.dart';
-import 'package:food_ordering_application/core/services/cart_services.dart';
-import 'package:food_ordering_application/core/services/connectivity_service.dart';
-import 'package:food_ordering_application/core/services/notifacation_service.dart';
-import 'package:food_ordering_application/ui/shared/colors.dart';
-import 'package:food_ordering_application/ui/shared/custom_widgets/custom_toast.dart';
+import 'package:flutter_templete/core/data/reposotories/shared_prefernces.dart'; 
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../app/my_app_controller.dart';
 import '../../core/enums/connectivity_status.dart';
+import '../../core/enums/file_type_enum.dart';
+import '../../core/enums/message_type.dart';
+import '../../core/services/cart_services.dart';
+import '../../core/services/connectivity_service.dart';
+import '../../core/services/notification_service.dart';
+import 'colors.dart';
+import 'custom_widgets/custom_toast.dart'; 
 
 bool isEmail(String value) {
   RegExp regExp = RegExp(
@@ -54,8 +54,8 @@ double screenHeight(double percent) {
   return Get.size.height / percent;
 }
 
-SharedPreferenceRepository get storage =>
-    Get.find<SharedPreferenceRepository>();
+SharedPrefrenceRepostory get storage =>
+    Get.find<SharedPrefrenceRepostory>();
 
 CartService get cartService => Get.find<CartService>();
 NotificationService get notificationService => Get.find<NotificationService>();

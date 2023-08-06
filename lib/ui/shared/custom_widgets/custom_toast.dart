@@ -1,10 +1,10 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_ordering_application/ui/shared/utils.dart';
+import 'package:flutter_svg/flutter_svg.dart'; 
 
-import '../../../core/enums/message_type.dart';
+import '../../../core/enums/message_type.dart'; 
 import '../colors.dart';
+import '../utils.dart';
 
 class CustomToast {
   static showMessage(
