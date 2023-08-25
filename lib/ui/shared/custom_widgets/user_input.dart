@@ -47,17 +47,17 @@ class _UserInputState extends State<UserInput> {
                   )
                 : widget.suffixIcon,
             contentPadding:
-                EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.w),
+                EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.w),
             hintText: widget.text,
             prefixIcon: widget.prefixIcon,
             hintStyle: const TextStyle(
               color: Color.fromRGBO(182, 183, 183, 1),
             ),
-            filled: true,
-            fillColor: const Color.fromRGBO(242, 242, 242, 1),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide.none),
+            // filled: true,
+            // fillColor: const Color.fromRGBO(242, 242, 242, 1),
+            border: OutlineInputBorder(borderSide: BorderSide()
+                // borderRadius: BorderRadius.circular(30),
+                ),
           ),
         ),
       ),

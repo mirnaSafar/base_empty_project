@@ -18,7 +18,7 @@ class CustomRowText extends StatelessWidget {
         InkWell(
           child: CustomText(
             text: linkText,
-            textColor: AppColors.mainOrangeColor,
+            textColor: AppColors.mainPurpleColor,
             bold: true,
           ),
           onTap: onTap,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/views/main_view/menu_view/menu_view.dart';
 
 import '../../../core/enums/bottom_Navigation.dart';
 import '../../shared/colors.dart';
 import '../../shared/utils.dart';
+import 'home_view/home_view.dart';
 import 'main_view_widgets/bottom_navigation_widget.dart';
 
 class MainView extends StatefulWidget {
@@ -14,13 +16,12 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   BottomNavigationEnum selected = BottomNavigationEnum.HOME;
-  PageController pageController = PageController(initialPage: 1);
+  PageController pageController = PageController();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   // MainViewController controller = Get.put(MainViewController());
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       // backgroundColor: AppColors.mainBlackColor,
       key: scaffoldKey,
       endDrawer: Container(
@@ -42,7 +43,7 @@ class _MainViewState extends State<MainView> {
               duration: const Duration(
                 milliseconds: 100,
               ),
-              curve: Curves.easeInCirc);
+              curve: Curves.linear);
           setState(() {
             selected = selectedEnum;
           });
@@ -52,13 +53,15 @@ class _MainViewState extends State<MainView> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
+        // scrollBehavior: ScrollBehavior(),
         onPageChanged: (pageNumer) {},
         children: const [
           // ProductsView(),
-          // HomeView(),
+          HomeView(),
+          MenuView(),
           // CartView(),
         ],
       ),
-    ));
+    );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; 
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../core/enums/message_type.dart'; 
+import '../../../core/enums/message_type.dart';
 import '../colors.dart';
 import '../utils.dart';
 
@@ -27,7 +27,7 @@ class CustomToast {
         break;
       case MessageType.WARNING:
         imageName = 'warning';
-        ShadowColor = AppColors.mainOrangeColor;
+        ShadowColor = AppColors.mainPurpleColor;
         break;
 
       case null:

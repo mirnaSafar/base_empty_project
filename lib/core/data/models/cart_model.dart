@@ -1,29 +1,28 @@
 import 'dart:convert';
 
+import 'package:flutter_templete/core/data/models/product_model.dart';
+
 class CartModel {
   int? count;
   double? total;
-  // MealModel? meal;
+  ProductModel? product;
 
-  CartModel({
-    this.count,
-    this.total,
-    //  this.meal
-  });
+  CartModel({this.count, this.total, this.product});
 
   CartModel.fromJson(Map<String, dynamic> json) {
     count = json['count'];
     total = json['total'];
-    // meal
-    //  = json['meal'] != null ? new MealModel.fromJson(json['meal']) : null;
+    product = json['product'] != null
+        ? new ProductModel.fromJson(json['product'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['count'] = this.count;
     data['total'] = this.total;
-    // if (this.meal != null) {
-    //   data['meal'] = this.meal!.toJson();
+    // if (this.product != null) {
+    //   data['product'] = this.product!.toJson();
     // }
     return data;
   }
@@ -32,7 +31,7 @@ class CartModel {
     return {
       'count': model.count,
       'total': model.total,
-      // 'meal': model.meal,
+      'product': model.product,
     };
   }
 

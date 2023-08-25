@@ -1,7 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_templete/core/data/reposotories/shared_prefernces.dart'; 
+import 'package:flutter_templete/core/data/reposotories/shared_prefernces.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,7 +13,7 @@ import '../../core/services/cart_services.dart';
 import '../../core/services/connectivity_service.dart';
 import '../../core/services/notification_service.dart';
 import 'colors.dart';
-import 'custom_widgets/custom_toast.dart'; 
+import 'custom_widgets/custom_toast.dart';
 
 bool isEmail(String value) {
   RegExp regExp = RegExp(
@@ -54,8 +54,7 @@ double screenHeight(double percent) {
   return Get.size.height / percent;
 }
 
-SharedPrefrenceRepostory get storage =>
-    Get.find<SharedPrefrenceRepostory>();
+SharedPrefrenceRepostory get storage => Get.find<SharedPrefrenceRepostory>();
 
 CartService get cartService => Get.find<CartService>();
 NotificationService get notificationService => Get.find<NotificationService>();
@@ -76,7 +75,7 @@ void customLoader() => BotToast.showCustomLoading(toastBuilder: (context) {
         width: screenWidth(4),
         height: screenWidth(4),
         child: SpinKitCircle(
-          color: AppColors.mainOrangeColor,
+          color: AppColors.mainPurpleColor,
           size: screenWidth(8),
         ),
       );

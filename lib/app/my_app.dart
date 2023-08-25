@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//
 Locale getlocal() {
   if (storage.getAppLanguage() == 'ar') {
     return Locale('ar', 'SA');

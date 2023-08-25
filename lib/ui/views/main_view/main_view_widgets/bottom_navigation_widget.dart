@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_ordering_application/core/enums/bottom_navigation.dart';
-import 'package:food_ordering_application/ui/shared/custom_widgets/custom_text.dart';
-import 'package:food_ordering_application/ui/shared/utils.dart';
-import 'package:food_ordering_application/ui/views/main_view/main_view_widgets/bottom_nav_clipper.dart';
+import 'package:flutter_templete/main.dart';
+import 'package:flutter_templete/ui/views/main_view/main_view_controller.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/enums/bottom_Navigation.dart';
 import '../../../shared/colors.dart';
+import '../../../shared/custom_widgets/custom_text.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
   final BottomNavigationEnum bottomNavigationEnum;
@@ -23,47 +23,21 @@ class BottomNavigationWidget extends StatefulWidget {
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   @override
   Widget build(BuildContext context) {
+    MainViewController controller = Get.put(MainViewController());
     final size = MediaQuery.of(context).size;
-    double cpWidth = 500;
     return Stack(
         // fit: StackFit.loose,
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.center,
         children: [
-          CustomPaint(
-            painter: BottomNavShadowPainter(
-                shadow: Shadow(blurRadius: 12, color: AppColors.mainTextColor),
-                clipper: BottomNavClipper()),
-            child: ClipPath(
-              clipper: BottomNavClipper(),
-              child: Container(
-                width: size.width,
-                height: size.height * 0.09,
-                color: AppColors.mainWhiteColor,
-              ),
-            ),
+          Container(
+            width: size.width,
+            height: size.height * 0.12,
+            color: AppColors.mainWhiteColor,
           ),
-          // Padding(
-          //     padding: EdgeInsets.only(bottom: 0.04 * size.height),
-          //     child: InkWell(
-          //       onTap: () {
-          //         widget.onTap(BottomNavigationEnum.HOME, 1);
-          //       },
-          //       child: CircleAvatar(
-          //         backgroundColor:
-          //             widget.bottomNavigationEnum == BottomNavigationEnum.HOME
-          //                 ? AppColors.mainBlueColor
-          //                 : AppColors.mainTextColor,
-          //         radius: size.width * 0.085,
-          //         child: SvgPicture.asset('assets/images/home-svgrepo-com.svg',
-          //             color: AppColors.mainWhiteColor
-          //             // : AppColors.mainWhiteColor,
-          //             ),
-          //       ),
-          //     )),
           Positioned(
-            bottom: size.height * 0.00,
-            left: 20,
-            right: 20,
+            // bottom: size.height * 0.00,
+            left: 0,
+            right: 0,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
               child: Row(
@@ -71,52 +45,103 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                 // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   navItem(
-                      imageName: 'products-svgrepo-com',
-                      text: ' ',
-                      isSelected: widget.bottomNavigationEnum ==
-                          BottomNavigationEnum.PRODUCTS,
-                      onTap: () {
-                        widget.onTap(BottomNavigationEnum.PRODUCTS, 0);
-                      },
-                      size: size),
-                  navItem(
-                      imageName: 'home-svgrepo-com',
-                      text: ' ',
+                      imageName: 'Icon open-home',
+                      text: 'HOME',
                       isSelected: widget.bottomNavigationEnum ==
                           BottomNavigationEnum.HOME,
                       onTap: () {
-                        widget.onTap(BottomNavigationEnum.HOME, 1);
+                        widget.onTap(BottomNavigationEnum.HOME, 0);
                       },
                       size: size),
                   Stack(
                     clipBehavior: Clip.none,
                     children: [
                       navItem(
-                          imageName: 'cart-svgrepo-com',
-                          text: ' ',
+                          imageName: 'Icon material-shopping-cart',
+                          text: 'MY CART',
                           isSelected: widget.bottomNavigationEnum ==
-                              BottomNavigationEnum.CART,
+                              BottomNavigationEnum.MYCART,
                           onTap: () {
-                            widget.onTap(BottomNavigationEnum.CART, 2);
+                            widget.onTap(BottomNavigationEnum.MYCART, 1);
                           },
                           size: size),
-                      Positioned(
-                        bottom: 24,
-                        right: -3,
-                        child: CircleAvatar(
-                          radius: 8,
-                          backgroundColor: AppColors.mainRedColor,
-                          child: Obx(
-                            () => CustomText(
-                              text: cartService.cartCount.toString(),
-                              textColor: AppColors.mainWhiteColor,
-                              fontSize: 13,
+                      Visibility(
+                        visible: controller.notificationCounter.value != 0,
+                        child: Positioned(
+                          bottom: 24,
+                          right: -3,
+                          child: CircleAvatar(
+                            radius: 8,
+                            backgroundColor: AppColors.mainRedColor,
+                            child: Obx(
+                              () => CustomText(
+                                text: '6',
+                                textColor: AppColors.mainWhiteColor,
+                                fontSize: 13,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  navItem(
+                      imageName: 'Group 208',
+                      text: 'MY POINT',
+                      isSelected: widget.bottomNavigationEnum ==
+                          BottomNavigationEnum.MYPOINTS,
+                      onTap: () {
+                        widget.onTap(BottomNavigationEnum.MYPOINTS, 2);
+                      },
+                      size: size),
+                  navItem(
+                      imageName: 'Icon material-event',
+                      text: 'EVENTS',
+                      isSelected: widget.bottomNavigationEnum ==
+                          BottomNavigationEnum.EVENTS,
+                      onTap: () {
+                        widget.onTap(BottomNavigationEnum.EVENTS, 3);
+                      },
+                      size: size),
+                  SizedBox(
+                    width: size.width * 0.15,
+                    child: InkWell(
+                      onTap: () {
+                        widget.onTap(BottomNavigationEnum.NFT, 4);
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3),
+                              color: widget.bottomNavigationEnum ==
+                                      BottomNavigationEnum.NFT
+                                  ? AppColors.mainBlueColor
+                                  : AppColors.mainGreyColor,
+                            ),
+                            // padding: EdgeInsets.symmetric(
+                            //     horizontal: screenWidth(50)),
+                            child: SvgPicture.asset(
+                              // alignment: Alignment.center,
+                              fit: BoxFit.scaleDown,
+                              'assets/images/NFT.svg',
+                              color: AppColors.mainWhiteColor,
+                              // width: size.width * 0.09,
+                              height: size.width * 0.075,
+                            ),
+                          ),
+                          5.ph,
+                          SizedBox(
+                            height: size.width * 0.02,
+                          ),
+                          CustomText(
+                            text: 'NFT',
+                            fontSize: size.width * 0.03,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -131,33 +156,30 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     required Function() onTap,
     required Size size,
   }) {
-    return InkWell(
-      onTap: onTap,
-      // () {
-      //   onTap();
-      // },
-      child: Column(
-        // mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.asset(
-            'assets/images/$imageName.svg',
-            color:
-                isSelected ? AppColors.mainBlueColor : AppColors.mainBlackColor,
-            // width: size.width * 0.09,
-            height: size.width * 0.08,
-          ),
-          SizedBox(
-            height: size.width * 0.02,
-          ),
-          Text(
-            text,
-            style: TextStyle(
+    return SizedBox(
+      width: size.width * 0.15,
+      child: InkWell(
+        onTap: onTap,
+        child: Column(
+          children: [
+            SvgPicture.asset(
+              'assets/images/$imageName.svg',
               color: isSelected
                   ? AppColors.mainBlueColor
-                  : AppColors.mainTextColor,
+                  : AppColors.mainGreyColor,
+              // width: size.width * 0.09,
+              height: size.width * 0.075,
             ),
-          )
-        ],
+            5.ph,
+            SizedBox(
+              height: size.width * 0.02,
+            ),
+            CustomText(
+              text: text,
+              fontSize: size.width * 0.03,
+            ),
+          ],
+        ),
       ),
     );
   }

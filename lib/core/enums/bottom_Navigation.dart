@@ -1,7 +1,7 @@
 enum BottomNavigationEnum {
-  MENU,
-  OFFERS,
+  MYCART,
+  MYPOINTS,
   HOME,
-  PROFILE,
-  MORE
+  EVENTS,
+  NFT,
 }
